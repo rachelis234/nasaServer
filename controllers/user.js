@@ -51,8 +51,6 @@ const loginUser = (req, res) => {
     return res.status(401).json({
       message: `Auth failed password  ${password}  ${user.password}  ${email}  ${user.email}`
     });
-    //   let decoded = jwt.verify(token, process.env.JWT_SECRET);
-    //   res.json({ token: token, decoded: decoded });
   });
 };
 const updateUser = (req, res) => {

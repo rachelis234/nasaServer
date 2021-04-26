@@ -13,16 +13,12 @@ const callAPI = () => {
     request(options, function(err, res, body) {
       if (err) {
         reject(err);
-        // console.error("error:", err);
       } else {
         resolve(body);
-        // console.log("statusCode:", res && res.statusCode);
-        // console.log('body:',body);
       }
     });
   });
 };
-// ??????????????????????????????????????????
 const getPictureOfDay = (req, res) => {
   callAPI()
     .then(async body => {
@@ -58,8 +54,6 @@ const getPictureOfDay = (req, res) => {
     });
 };
 const getAllPictures = async (req, res) => {
-  // let user = await User.findById(req.userId);
-  // let pictures=await user.pictures.;
   let pictures = await Picture.find({ userId: req.userId });
   if (!pictures) {
     return res.status(500).json({ message: "pictures do not exists" });
@@ -67,9 +61,7 @@ const getAllPictures = async (req, res) => {
   return res.status(200).json({ pictures });
 };
 const uploadPicture = async (req, res) => {
-  // console.log(req.file);
   const { path: url, filename: title } = req.file;
-//   const { userId } = req.userId;
   let newPicture = new Picture({
     date: Date.now(),
     media_type: "image",
